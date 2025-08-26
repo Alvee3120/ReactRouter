@@ -84,6 +84,30 @@ That's how we can easily handle the routing in our project
 ### Param
 In React Router, a param (short for parameter) is a dynamic part of the URL that you can capture and use inside your components. 
 
+```js
+  {
+        path: "github/:username",
+        element: <Github />
+      }
 ```
-/user/:id
+
+To Access the url value you just need to import param like this and you can access the vlaue
+
+```js
+import { useParams } from "react-router-dom"
+
+function GitHub(){
+
+    const {username} = useParams()
+    return (
+        <>
+        <h1>Username : {username} </h1>
+        </>
+    )
+}
+
+export default GitHub
 ```
+
+
+Note: Routing parameter and varriable must be same , In my case it is "username"
