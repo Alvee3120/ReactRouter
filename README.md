@@ -110,4 +110,52 @@ export default GitHub
 ```
 
 
-Note: Routing parameter and varriable must be same , In my case it is "username"
+Note: Routing parameter and varriable must be same , In my case it's' "username"
+
+
+
+### React Router’s route configuration
+
+It’s part of the routing system. In React Router v6.4+, loaders are attached to routes.
+
+They run before the route’s component renders.
+
+
+For Example , Now we are going to use the github API , So, When user hover or going to click on the github menu item, it automatically run the components and load it 
+
+
+For Using this First we need to create a function. Here we named it "githubInfoLoader" and then export it 
+After that we need to call the function from our Router
+
+Function : 
+
+```js
+export const githubInfoLoader = async () => {
+    const res = await fetch('https://api.github.com/users/Alvee3120')
+    return res.json()
+}
+```
+
+Router: 
+```js
+  {
+        path: "github",
+        loader:githubInfoLoader,
+        element: <Github />
+      }
+```
+
+And oviously we need to import it 
+```js
+import { useLoaderData } from 'react-router-dom'
+```
+And Define it
+```js
+const data = useLoaderData()
+```
+
+### Simple BreakDown 
+
+First when user going to click on github menu  githubInfoLoader activated and it fetch the data from the given API , 
+Then it will return the json file to useLoaderData( React Dom Router) , then we store  useLoaderData using a varriable name data. Though this Data we access the json
+
